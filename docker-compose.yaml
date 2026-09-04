@@ -1,0 +1,24 @@
+# Despliegue base de la landing de Aprendo Feliz (Astro, estática).
+# El Dockerfile la compila y nginx la sirve en el puerto 80 interno.
+#
+# Aquí no se publica puerto al host: se expone para que un proxy inverso enrute el dominio,
+# el mismo patrón que learning-fe-demo (ADR 008 en el harness).
+#
+# Este repo todavía no está en la topología del ADR 008 — falta decidir a qué dominio sirve
+# y si se conecta a la red `coolify` con un alias. Hasta entonces, este compose sirve como
+# entorno base: para levantarlo en local, docker-compose.override.yml publica 8080:80 y
+# Docker Compose lo carga solo cuando no se pasa `-f docker-compose.yaml` explícitamente.
+services:
+  learning-landing:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: learning-landing
+    restart: unless-stopped
+    expose:
+      - "80"
+    healthcheck:
+      test: ["CMD", "wget", "-qO-", "http://127.0.0.1:80/"]
+      interval: 30s
+      timeout: 5s
+      retries: 3

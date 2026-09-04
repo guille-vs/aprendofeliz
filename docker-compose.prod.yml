@@ -1,0 +1,32 @@
+# Uso: (a) prueba local con imagen de producción o (b) deploy en Coolify con
+# Build Pack "Docker Compose", Location: /docker-compose.prod.yml.
+# La landing se sirve estática por Nginx dentro del contenedor.
+# Se conecta a la red externa `coolify` para que NPM pueda alcanzarla.
+#
+# Sin `networks` con alias, el proxy no encuentra el contenedor: Coolify ignora
+# `container_name` y genera un nombre distinto (con uuid) en cada deploy, así que el
+# alias de red es el único destino estable (ver ADR 008 en globalsone-learning-harness).
+# Este repo aún no tiene dominio asignado en esa tabla — el alias de abajo es el
+# candidato hasta que se decida.
+
+services:
+  landing:
+    build: .
+    image: globalsone-learning-landing:latest
+    expose:
+      - "80"
+    restart: unless-stopped
+    networks:
+      coolify:
+        aliases:
+          - learning-landing
+    healthcheck:
+      test: ["CMD", "wget", "--spider", "-q", "http://127.0.0.1:80/"]
+      interval: 15s
+      timeout: 5s
+      retries: 5
+      start_period: 20s
+
+networks:
+  coolify:
+    external: true

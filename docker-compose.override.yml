@@ -1,0 +1,9 @@
+# Solo para uso local. Docker Compose lo carga automáticamente con `docker compose up`, y lo
+# ignora cuando se le pasa `-f docker-compose.yaml`, que es como se despliega en el servidor.
+#
+# Sin esto, `docker compose up` levanta el contenedor sin publicar puerto y la landing no se
+# puede abrir desde el navegador: `expose` no basta, solo la hace visible a otros contenedores.
+services:
+  learning-landing:
+    ports:
+      - "8080:80"
