@@ -1,235 +1,33 @@
 ---
-const nav = [
-	{ href: "#producto", label: "Producto" },
-	{ href: "#academias", label: "Para academias" },
-	{ href: "#contacto", label: "Contacto" },
-];
+import BaseLayout from "../layouts/BaseLayout.astro";
+import SiteHeader from "../components/SiteHeader.astro";
+import Hero from "../components/Hero.astro";
+import TrustStrip from "../components/TrustStrip.astro";
+import Pillars from "../components/Pillars.astro";
+import HowItWorks from "../components/HowItWorks.astro";
+import Modules from "../components/Modules.astro";
+import PhotoBand from "../components/PhotoBand.astro";
+import Faq from "../components/Faq.astro";
+import Testimonial from "../components/Testimonial.astro";
+import CtaBand from "../components/CtaBand.astro";
+import SiteFooter from "../components/SiteFooter.astro";
 ---
 
-<html lang="es">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<meta name="generator" content={Astro.generator} />
-		<meta
-			name="description"
-			content="Aprendo Feliz: la plataforma para que tu academia publique cursos, cobre matrículas y enseñe en línea."
-		/>
-		<title>Aprendo Feliz — plataforma de e-learning para academias</title>
-	</head>
-	<body>
-		<header class="site-header">
-			<div class="container">
-				<a href="/" class="logo">Aprendo Feliz</a>
-				<nav>
-					{nav.map((item) => <a href={item.href}>{item.label}</a>)}
-				</nav>
-			</div>
-		</header>
-
-		<main>
-			<section class="hero container">
-				<h1>Tu academia, en línea, sin fricción</h1>
-				<p class="lead">
-					Aprendo Feliz es la plataforma donde tu organización publica cursos,
-					gestiona alumnos y cobra matrículas — todo con tu propia marca.
-				</p>
-				<div class="cta">
-					<a class="button primary" href="#contacto">Solicitar acceso</a>
-					<a class="button" href="#producto">Ver cómo funciona</a>
-				</div>
-			</section>
-
-			<section id="producto" class="features container">
-				<article>
-					<h2>Cursos a tu ritmo</h2>
-					<p>
-						Organiza el contenido en unidades, con desbloqueo inmediato o por
-						calendario, según lo que tu curso necesite.
-					</p>
-				</article>
-				<article>
-					<h2>Pagos simples</h2>
-					<p>
-						Recibe y valida comprobantes de pago sin integraciones complejas
-						para empezar a cobrar desde el primer día.
-					</p>
-				</article>
-				<article>
-					<h2>Tu marca, tu subdominio</h2>
-					<p>
-						Cada academia tiene su propio espacio con sus colores y su
-						identidad, listo para compartir con sus alumnos.
-					</p>
-				</article>
-			</section>
-
-			<section id="academias" class="banner container">
-				<h2>¿Tienes una academia u organización educativa?</h2>
-				<p>
-					Aprendo Feliz está pensado para que publiques tu primer curso en
-					minutos, no en semanas.
-				</p>
-			</section>
-		</main>
-
-		<footer id="contacto" class="site-footer">
-			<div class="container">
-				<p>¿Quieres probar Aprendo Feliz? Escríbenos.</p>
-				<a class="button primary" href="mailto:hola@aprendofeliz.com"
-					>hola@aprendofeliz.com</a
-				>
-				<p class="copy">© {new Date().getFullYear()} Aprendo Feliz. Un producto de Global S1.</p>
-			</div>
-		</footer>
-	</body>
-</html>
-
-<style>
-	:root {
-		--fg: #1b1b1f;
-		--bg: #ffffff;
-		--muted: #5b5b66;
-		--brand: #4f46e5;
-		--brand-contrast: #ffffff;
-		--surface: #f5f5fb;
-		--border: #e6e6f0;
-	}
-
-	:global(*) {
-		box-sizing: border-box;
-	}
-
-	:global(html, body) {
-		margin: 0;
-		padding: 0;
-	}
-
-	:global(body) {
-		font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
-		color: var(--fg);
-		background: var(--bg);
-		line-height: 1.5;
-	}
-
-	.container {
-		max-width: 1080px;
-		margin: 0 auto;
-		padding: 0 1.5rem;
-	}
-
-	.site-header {
-		border-bottom: 1px solid var(--border);
-		padding: 1rem 0;
-	}
-
-	.site-header .container {
-		display: flex;
-		align-items: center;
-		justify-content: space-between;
-	}
-
-	.logo {
-		font-weight: 700;
-		font-size: 1.1rem;
-		color: var(--fg);
-		text-decoration: none;
-	}
-
-	nav {
-		display: flex;
-		gap: 1.5rem;
-	}
-
-	nav a {
-		color: var(--muted);
-		text-decoration: none;
-		font-size: 0.95rem;
-	}
-
-	nav a:hover {
-		color: var(--fg);
-	}
-
-	.hero {
-		text-align: center;
-		padding: 5rem 1.5rem 4rem;
-	}
-
-	.hero h1 {
-		font-size: clamp(2rem, 5vw, 3rem);
-		margin: 0 0 1rem;
-	}
-
-	.lead {
-		color: var(--muted);
-		font-size: 1.15rem;
-		max-width: 640px;
-		margin: 0 auto 2rem;
-	}
-
-	.cta {
-		display: flex;
-		gap: 1rem;
-		justify-content: center;
-		flex-wrap: wrap;
-	}
-
-	.button {
-		display: inline-block;
-		padding: 0.7rem 1.4rem;
-		border-radius: 8px;
-		text-decoration: none;
-		font-weight: 600;
-		border: 1px solid var(--border);
-		color: var(--fg);
-	}
-
-	.button.primary {
-		background: var(--brand);
-		border-color: var(--brand);
-		color: var(--brand-contrast);
-	}
-
-	.features {
-		display: grid;
-		grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-		gap: 2rem;
-		padding: 3rem 1.5rem;
-	}
-
-	.features h2 {
-		font-size: 1.15rem;
-		margin-bottom: 0.5rem;
-	}
-
-	.features p {
-		color: var(--muted);
-		margin: 0;
-	}
-
-	.banner {
-		background: var(--surface);
-		border-radius: 16px;
-		text-align: center;
-		padding: 3rem 1.5rem;
-		margin: 2rem auto 4rem;
-	}
-
-	.banner p {
-		color: var(--muted);
-	}
-
-	.site-footer {
-		border-top: 1px solid var(--border);
-		padding: 3rem 0;
-		text-align: center;
-	}
-
-	.site-footer .copy {
-		color: var(--muted);
-		font-size: 0.85rem;
-		margin-top: 2rem;
-	}
-</style>
+<BaseLayout
+	title="Aprendo Feliz — plataforma de e-learning para academias"
+	description="Aprendo Feliz: la plataforma para que tu academia publique cursos, cobre matrículas y enseñe en línea con tu propia marca y tu propio subdominio."
+>
+	<SiteHeader />
+	<main>
+		<Hero />
+		<TrustStrip />
+		<Pillars />
+		<HowItWorks />
+		<Modules />
+		<PhotoBand />
+		<Faq />
+		<Testimonial />
+		<CtaBand />
+	</main>
+	<SiteFooter />
+</BaseLayout>

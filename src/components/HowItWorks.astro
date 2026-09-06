@@ -1,0 +1,349 @@
+---
+import Icon from "./Icon.astro";
+---
+
+<section id="como-funciona" class="hiw section">
+	<div class="section-inner">
+		<p class="eyebrow">FLUJO DE LANZAMIENTO</p>
+		<h2>En marcha en tres pasos sencillos</h2>
+
+		<div class="steps">
+			<article class="step">
+				<span class="number">01</span>
+				<h3>Crea tu academia</h3>
+				<p class="desc">
+					Elige tu subdominio, sube tu logo y configura tus colores. Lista en
+					minutos.
+				</p>
+
+				<div class="mock">
+					<div class="mock-head">
+						<strong>Personalización Visual</strong>
+						<i class="dot teal" aria-hidden="true"></i>
+					</div>
+					<div class="url-row">mi-instituto.aprendofeliz.com</div>
+					<div class="colors-row">
+						<i class="swatch" style="background:var(--platform-primary)"></i>
+						<i class="swatch" style="background:var(--teal-deep)"></i>
+						<i class="swatch" style="background:var(--logo-magenta)"></i>
+						<span>Color de marca aplicado</span>
+					</div>
+				</div>
+			</article>
+
+			<div class="connector" aria-hidden="true">
+				<span class="line line-a"></span>
+			</div>
+
+			<article class="step">
+				<span class="number">02</span>
+				<h3>Sube tu primer curso</h3>
+				<p class="desc">
+					Organiza el contenido en unidades con textos, videos y archivos. Define
+					el calendario de acceso.
+				</p>
+
+				<div class="mock">
+					<div class="mock-head">
+						<strong>Módulo 1: Fundamentos</strong>
+						<span class="add-lesson">+ Lección</span>
+					</div>
+					<div class="lesson-row">
+						<span class="lesson-left">
+							<Icon name="play_circle" size={13} color="var(--platform-primary)" />
+							01. Introducción al temario
+						</span>
+						<span class="lesson-meta">14 min</span>
+					</div>
+					<div class="lesson-row">
+						<span class="lesson-left">
+							<Icon name="description" size={13} color="var(--teal-deep)" />
+							02. Guía de estudio PDF
+						</span>
+						<span class="lesson-meta">2.4 MB</span>
+					</div>
+				</div>
+			</article>
+
+			<div class="connector" aria-hidden="true">
+				<span class="line line-b"></span>
+			</div>
+
+			<article class="step">
+				<span class="number">03</span>
+				<h3>Comparte y cobra</h3>
+				<p class="desc">
+					Envía tu enlace personalizado. Los alumnos se registran, suben su
+					comprobante y acceden al curso.
+				</p>
+
+				<div class="mock">
+					<div class="mock-head">
+						<strong>Aprobación Inmediata</strong>
+						<span class="click-badge">1 Click</span>
+					</div>
+					<div class="pay-box">
+						<div class="pay-row">
+							<strong class="student">Carlos Mendoza</strong>
+							<strong class="amount">$49 USD</strong>
+						</div>
+						<div class="pay-row">
+							<span class="method">Vía PSE / Transferencia</span>
+							<span class="approved">Aprobado</span>
+						</div>
+					</div>
+				</div>
+			</article>
+		</div>
+	</div>
+</section>
+
+<style>
+	.hiw {
+		background: var(--white);
+	}
+
+	.section-inner {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 16px;
+	}
+
+	h2 {
+		font-size: clamp(30px, 3.4vw, 42px);
+		font-weight: 700;
+		letter-spacing: -0.8px;
+		color: var(--logo-navy);
+		text-align: center;
+	}
+
+	.steps {
+		display: flex;
+		align-items: flex-start;
+		width: 100%;
+		margin-top: 32px;
+	}
+
+	.step {
+		flex: 1 1 0;
+		min-width: 0;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 16px;
+	}
+
+	.number {
+		width: 48px;
+		height: 48px;
+		flex: 0 0 auto;
+		border-radius: 24px;
+		background: var(--white);
+		border: 2px solid var(--platform-primary);
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		font-size: 18px;
+		font-weight: 700;
+		color: var(--logo-navy);
+	}
+
+	.step h3 {
+		font-size: 20px;
+		font-weight: 700;
+		color: var(--logo-navy);
+		text-align: center;
+	}
+
+	.desc {
+		max-width: 280px;
+		text-align: center;
+		font-size: 15px;
+		line-height: 1.6;
+		color: var(--ink-medium);
+	}
+
+	.connector {
+		flex: 1 1 0;
+		height: 48px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+
+	.line {
+		width: 100%;
+		height: 2px;
+	}
+
+	.line-a {
+		background: linear-gradient(90deg, var(--logo-purple) 0%, var(--logo-cyan) 100%);
+	}
+
+	.line-b {
+		background: linear-gradient(90deg, var(--logo-cyan) 0%, var(--logo-purple) 100%);
+	}
+
+	/* ---------- Step mocks ---------- */
+
+	.mock {
+		width: 100%;
+		background: var(--white);
+		border: 1px solid var(--line);
+		border-radius: 12px;
+		padding: 16px;
+		display: flex;
+		flex-direction: column;
+		gap: 10px;
+		text-align: left;
+	}
+
+	.mock-head {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: 8px;
+	}
+
+	.mock-head strong {
+		font-size: 11px;
+		font-weight: 700;
+		color: var(--logo-navy);
+	}
+
+	.dot {
+		width: 8px;
+		height: 8px;
+		border-radius: 50%;
+	}
+
+	.dot.teal {
+		background: var(--teal-deep);
+	}
+
+	.url-row {
+		height: 26px;
+		display: flex;
+		align-items: center;
+		padding: 0 10px;
+		background: var(--brand-bg);
+		border: 1px solid var(--line);
+		border-radius: 6px;
+		font-size: 10px;
+		color: var(--ink-medium);
+	}
+
+	.colors-row {
+		display: flex;
+		align-items: center;
+		gap: 6px;
+		font-size: 10px;
+		color: var(--ink-medium);
+	}
+
+	.swatch {
+		width: 18px;
+		height: 18px;
+		border-radius: 50%;
+		flex: 0 0 auto;
+	}
+
+	.add-lesson {
+		font-size: 10px;
+		font-weight: 700;
+		color: var(--platform-primary);
+	}
+
+	.lesson-row {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: 8px;
+		background: var(--brand-bg);
+		border-radius: 6px;
+		padding: 6px 8px;
+	}
+
+	.lesson-left {
+		display: flex;
+		align-items: center;
+		gap: 6px;
+		font-size: 10px;
+		color: var(--logo-navy);
+	}
+
+	.lesson-meta {
+		font-size: 10px;
+		color: var(--ink-medium);
+		white-space: nowrap;
+	}
+
+	.click-badge {
+		background: var(--teal-soft);
+		color: var(--teal-label);
+		font-size: 9px;
+		font-weight: 700;
+		border-radius: 4px;
+		padding: 2px 8px;
+	}
+
+	.pay-box {
+		background: var(--brand-bg);
+		border-radius: 8px;
+		padding: 10px;
+		display: flex;
+		flex-direction: column;
+		gap: 6px;
+	}
+
+	.pay-row {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: 8px;
+	}
+
+	.student {
+		font-size: 10px;
+		font-weight: 700;
+		color: var(--logo-navy);
+	}
+
+	.amount {
+		font-size: 10px;
+		font-weight: 700;
+		color: var(--teal-deep);
+	}
+
+	.method {
+		font-size: 9px;
+		color: var(--ink-medium);
+	}
+
+	.approved {
+		background: var(--platform-primary);
+		color: var(--white);
+		font-size: 9px;
+		font-weight: 700;
+		border-radius: 4px;
+		padding: 3px 8px;
+	}
+
+	@media (max-width: 960px) {
+		.steps {
+			flex-direction: column;
+			align-items: center;
+			gap: 40px;
+			max-width: 420px;
+		}
+
+		.step {
+			width: 100%;
+		}
+
+		.connector {
+			display: none;
+		}
+	}
+</style>

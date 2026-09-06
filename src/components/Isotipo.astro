@@ -1,0 +1,36 @@
+---
+/*
+ * Platform isotipo. The master lives in `globalsone-learning-harness/logos/`
+ * and is copied into each frontend's `public/` (see that folder's README) —
+ * the harness is read-only, so never link across repos.
+ *
+ * `size` is the rendered height; the width follows the asset's own ratio.
+ */
+
+const INTRINSIC_WIDTH = 543;
+const INTRINSIC_HEIGHT = 482;
+
+interface Props {
+	size?: number;
+	alt?: string;
+}
+
+const { size = 36, alt = "" } = Astro.props;
+
+const width = Math.round((size * INTRINSIC_WIDTH) / INTRINSIC_HEIGHT);
+---
+
+<img
+	class="isotipo"
+	src="/logo-isotipo.png"
+	alt={alt}
+	width={width}
+	height={size}
+	decoding="async"
+/>
+
+<style>
+	.isotipo {
+		flex-shrink: 0;
+	}
+</style>

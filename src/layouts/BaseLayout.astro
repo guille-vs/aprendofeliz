@@ -1,0 +1,62 @@
+---
+import "../styles/tokens.css";
+
+interface Props {
+	title: string;
+	description: string;
+}
+
+const { title, description } = Astro.props;
+
+// Only the glyphs actually used by the design are requested, so the icon font
+// stays a small subset instead of the full Material Symbols set.
+const iconNames = [
+	"account_balance_wallet",
+	"arrow_forward",
+	"auto_stories",
+	"brush",
+	"check_circle",
+	"description",
+	"domain",
+	"expand_more",
+	"format_quote",
+	"group",
+	"layers",
+	"lock",
+	"menu_book",
+	"palette",
+	"play_circle",
+	"receipt_long",
+	"schedule",
+	"school",
+	"terminal",
+	"trending_up",
+	"verified",
+	"widgets",
+	"workspace_premium",
+].join(",");
+---
+
+<html lang="es">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<meta name="generator" content={Astro.generator} />
+		<meta name="description" content={description} />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			rel="stylesheet"
+			href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+		/>
+		<link
+			rel="stylesheet"
+			href={`https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=${iconNames}&display=block`}
+		/>
+		<title>{title}</title>
+	</head>
+	<body>
+		<slot />
+	</body>
+</html>

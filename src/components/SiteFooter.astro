@@ -1,0 +1,177 @@
+---
+import Isotipo from "./Isotipo.astro";
+
+const columns = [
+	{
+		title: "Producto",
+		links: [
+			"LMS Marca Blanca",
+			"Campus Virtual",
+			"Integraciones de Cobro",
+			"Flujo de Lanzamiento",
+		],
+	},
+	{
+		title: "Recursos",
+		links: [
+			"Blog EdTech",
+			"Guías para Creadores",
+			"Casos de Éxito",
+			"Centro de Ayuda",
+		],
+	},
+	{
+		title: "Legal",
+		links: [
+			"Términos de Servicio",
+			"Privacidad",
+			"Seguridad de Datos",
+			"Cumplimiento GDPR",
+		],
+	},
+];
+
+const year = new Date().getFullYear();
+---
+
+<footer class="site-footer">
+	<div class="section-inner">
+		<div class="top">
+			<div class="brand">
+				<span class="lockup">
+					<Isotipo size={28} />
+					<span class="wordmark">Aprendo Feliz</span>
+				</span>
+				<p class="blurb">
+					La plataforma de e-learning marca blanca que empodera a las academias
+					independientes de América Latina.
+				</p>
+			</div>
+
+			<div class="columns">
+				{
+					columns.map((column) => (
+						<div class="column">
+							<h3>{column.title}</h3>
+							<ul>
+								{column.links.map((link) => (
+									<li>{link}</li>
+								))}
+							</ul>
+						</div>
+					))
+				}
+			</div>
+		</div>
+
+		<div class="bottom">
+			<p>© {year} Aprendo Feliz. Un producto de Global S1.</p>
+			<p>Latinoamérica · Español</p>
+		</div>
+	</div>
+</footer>
+
+<style>
+	.site-footer {
+		background: var(--white);
+		border-top: 1px solid var(--line);
+		padding: 56px var(--gutter) 40px;
+	}
+
+	.section-inner {
+		display: flex;
+		flex-direction: column;
+		gap: 40px;
+	}
+
+	.top {
+		display: flex;
+		justify-content: space-between;
+		gap: 48px;
+	}
+
+	.brand {
+		width: 320px;
+		flex: 0 0 auto;
+		display: flex;
+		flex-direction: column;
+		gap: 16px;
+	}
+
+	.lockup {
+		display: flex;
+		align-items: center;
+		gap: 10px;
+	}
+
+	.wordmark {
+		font-size: 18px;
+		font-weight: 700;
+		color: var(--logo-navy);
+	}
+
+	.blurb {
+		font-size: 13px;
+		line-height: 1.6;
+		color: var(--ink-medium);
+	}
+
+	.columns {
+		display: flex;
+		gap: 64px;
+	}
+
+	.column h3 {
+		font-size: 13px;
+		font-weight: 700;
+		color: var(--logo-navy);
+		margin-bottom: 14px;
+	}
+
+	.column ul {
+		display: flex;
+		flex-direction: column;
+		gap: 14px;
+	}
+
+	.column li {
+		font-size: 14px;
+		color: var(--ink-medium);
+	}
+
+	.bottom {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: 16px;
+		padding-top: 20px;
+		border-top: 1px solid var(--line);
+		font-size: 13px;
+		color: var(--ink-medium);
+	}
+
+	@media (max-width: 900px) {
+		.top {
+			flex-direction: column;
+			gap: 40px;
+		}
+
+		.brand {
+			width: 100%;
+			max-width: 420px;
+		}
+
+		.columns {
+			flex-wrap: wrap;
+			gap: 32px 48px;
+		}
+	}
+
+	@media (max-width: 520px) {
+		.bottom {
+			flex-direction: column;
+			align-items: flex-start;
+			gap: 8px;
+		}
+	}
+</style>

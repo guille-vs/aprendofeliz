@@ -1,0 +1,16 @@
+---
+interface Props {
+	name: string;
+	size?: number;
+	color?: string;
+	class?: string;
+}
+
+const { name, size = 24, color, class: className } = Astro.props;
+
+const style = [`font-size:${size}px`, color ? `color:${color}` : null]
+	.filter(Boolean)
+	.join(";");
+---
+
+<span class:list={["ms", className]} style={style} aria-hidden="true">{name}</span>

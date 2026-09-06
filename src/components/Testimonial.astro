@@ -1,0 +1,127 @@
+---
+import Icon from "./Icon.astro";
+
+// Placeholder portrait carried over from the design file (Unsplash).
+const authorPhoto =
+	"https://images.unsplash.com/photo-1567795690579-ef47642729f7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3ODg3MjUwMzl8&ixlib=rb-4.1.0&q=80&w=1080";
+---
+
+<section class="testimonial section">
+	<div class="section-inner">
+		<figure class="card">
+			<span class="quote-mark" aria-hidden="true">
+				<Icon name="format_quote" size={44} color="var(--periwinkle)" />
+			</span>
+
+			<blockquote>
+				Migramos más de 400 alumnos desde una plataforma genérica a Aprendo
+				Feliz. Por primera vez nuestros estudiantes sienten que están en una
+				institución de verdad con nuestra propia marca, y el proceso de cobro se
+				redujo a la mitad del tiempo.
+			</blockquote>
+
+			<figcaption class="author">
+				<img
+					class="author-photo"
+					src={authorPhoto}
+					alt="Mónica Valenzuela"
+					width="52"
+					height="52"
+					loading="lazy"
+				/>
+				<span class="author-info">
+					<strong>Mónica Valenzuela</strong>
+					<em>Directora Académica, Instituto Nova Digital (Bogotá)</em>
+				</span>
+			</figcaption>
+		</figure>
+	</div>
+</section>
+
+<style>
+	.testimonial {
+		background: var(--brand-bg);
+		border-top: 1px solid var(--line);
+		border-bottom: 1px solid var(--line);
+	}
+
+	.section-inner {
+		display: flex;
+		justify-content: center;
+	}
+
+	.card {
+		position: relative;
+		width: 100%;
+		max-width: 900px;
+		background: var(--white);
+		border: 1px solid var(--line);
+		border-radius: 24px;
+		padding: 56px;
+		display: flex;
+		flex-direction: column;
+		gap: 32px;
+		overflow: hidden;
+	}
+
+	.quote-mark {
+		position: absolute;
+		right: 36px;
+		top: 16px;
+		opacity: 0.3;
+		pointer-events: none;
+	}
+
+	blockquote {
+		font-size: clamp(18px, 2vw, 22px);
+		font-weight: 500;
+		line-height: 1.65;
+		color: var(--logo-navy);
+	}
+
+	.author {
+		display: flex;
+		align-items: center;
+		gap: 16px;
+		padding-top: 24px;
+		border-top: 1px solid var(--line);
+	}
+
+	.author-photo {
+		width: 52px;
+		height: 52px;
+		flex: 0 0 auto;
+		border-radius: 50%;
+		border: 1px solid var(--line);
+		object-fit: cover;
+	}
+
+	.author-info {
+		display: flex;
+		flex-direction: column;
+		gap: 2px;
+	}
+
+	.author-info strong {
+		font-size: 16px;
+		font-weight: 700;
+		color: var(--logo-navy);
+	}
+
+	.author-info em {
+		font-size: 14px;
+		font-style: normal;
+		color: var(--ink-medium);
+	}
+
+	@media (max-width: 640px) {
+		.card {
+			padding: 32px 24px;
+			gap: 24px;
+		}
+
+		.quote-mark {
+			display: none;
+		}
+	}
+</style>

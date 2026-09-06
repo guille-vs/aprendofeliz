@@ -1,0 +1,177 @@
+---
+// Decorative bubbles, positioned as in the design file (1440px reference frame).
+const bubbles = [
+	{ size: 80, left: "80px", top: "40px" },
+	{ size: 56, left: "660px", top: "80px" },
+	{ size: 84, left: "1180px", top: "180px" },
+];
+---
+
+<section id="solicitar-acceso" class="cta-band section">
+	<div class="decor" aria-hidden="true">
+		<span class="glow glow-1"></span>
+		<span class="glow glow-2"></span>
+		{
+			bubbles.map((bubble) => (
+				<span
+					class="bubble"
+					style={`width:${bubble.size}px;height:${bubble.size}px;left:${bubble.left};top:${bubble.top}`}
+				/>
+			))
+		}
+	</div>
+
+	<div class="section-inner">
+		<p class="badge">
+			<span class="badge-dot"></span>
+			LANZA TU PROPIA ACADEMIA HOY
+		</p>
+
+		<h2>Publica tu primer curso en minutos, no en semanas.</h2>
+
+		<p class="subtext">
+			Únete a las academias que ya están profesionalizando su enseñanza en toda
+			Latinoamérica.
+		</p>
+
+		<div class="actions">
+			<a class="cta-primary" href="mailto:hola@aprendofeliz.com">
+				Solicitar acceso
+			</a>
+			<p class="email">
+				¿Tienes preguntas? Escríbenos directamente a
+				<a href="mailto:hola@aprendofeliz.com">hola@aprendofeliz.com</a>
+			</p>
+		</div>
+	</div>
+</section>
+
+<style>
+	.cta-band {
+		position: relative;
+		background: var(--logo-navy);
+		overflow: hidden;
+	}
+
+	.decor {
+		position: absolute;
+		inset: 0;
+		pointer-events: none;
+	}
+
+	.glow {
+		position: absolute;
+		border-radius: 50%;
+		opacity: 0.2;
+	}
+
+	.glow-1 {
+		width: 520px;
+		height: 520px;
+		left: -150px;
+		top: -200px;
+		background: var(--logo-magenta);
+		filter: blur(110px);
+	}
+
+	.glow-2 {
+		width: 580px;
+		height: 580px;
+		right: -190px;
+		top: 150px;
+		background: var(--logo-cyan);
+		filter: blur(130px);
+	}
+
+	.bubble {
+		position: absolute;
+		border-radius: 50%;
+		background: #ffffff;
+		border: 1px solid #ffffff;
+		opacity: 0.12;
+	}
+
+	.section-inner {
+		position: relative;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 32px;
+	}
+
+	.badge {
+		display: inline-flex;
+		align-items: center;
+		gap: 8px;
+		background: #ffffff18;
+		border: 1px solid #ffffff30;
+		border-radius: 20px;
+		padding: 6px 14px;
+		font-size: 12px;
+		font-weight: 700;
+		letter-spacing: 1px;
+		color: var(--periwinkle);
+	}
+
+	.badge-dot {
+		width: 8px;
+		height: 8px;
+		border-radius: 50%;
+		background: var(--logo-cyan);
+	}
+
+	h2 {
+		max-width: 700px;
+		text-align: center;
+		font-size: clamp(30px, 3.4vw, 42px);
+		font-weight: 700;
+		letter-spacing: -0.5px;
+		line-height: 1.2;
+		color: var(--white);
+	}
+
+	.subtext {
+		max-width: 600px;
+		text-align: center;
+		font-size: 16px;
+		color: #ffffffaa;
+	}
+
+	.actions {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 16px;
+	}
+
+	.cta-primary {
+		background: var(--gradient-brand);
+		color: var(--white);
+		font-size: 16px;
+		font-weight: 600;
+		border-radius: var(--radius);
+		padding: 14px 32px;
+		transition: transform 0.15s ease;
+	}
+
+	.cta-primary:hover {
+		transform: translateY(-1px);
+	}
+
+	.email {
+		font-size: 14px;
+		color: #d7d7ffcc;
+		text-align: center;
+	}
+
+	.email a {
+		text-decoration: underline;
+		text-underline-offset: 2px;
+	}
+
+	@media (max-width: 900px) {
+		.bubble {
+			display: none;
+		}
+	}
+</style>

@@ -1,0 +1,759 @@
+---
+import Icon from "./Icon.astro";
+
+const trustChecks = [
+	"Sin comisiones por venta",
+	"Configuración en 15 minutos",
+	"Soporte en español",
+];
+
+const sidebarNav = [
+	{ icon: "menu_book", label: "Cursos", active: true, badge: null },
+	{ icon: "group", label: "Alumnos", active: false, badge: null },
+	{ icon: "receipt_long", label: "Comprobantes", active: false, badge: "3" },
+	{ icon: "palette", label: "Ajustes de Marca", active: false, badge: null },
+];
+
+const metrics = [
+	{
+		label: "ALUMNOS ACTIVOS",
+		value: "384",
+		sub: "↑ +18% este mes",
+		subTone: "teal",
+	},
+	{
+		label: "MATRÍCULAS VALIDADAS",
+		value: "$6,420 USD",
+		sub: "100% cobro directo",
+		subTone: "primary",
+	},
+];
+---
+
+<section class="hero section">
+	<div class="section-inner hero-inner">
+		<div class="hero-content">
+			<p class="badge">
+				<span class="badge-dot"></span>
+				E-LEARNING MULTI-INQUILINO PARA LATINOAMÉRICA
+			</p>
+
+			<h1 class="headline">
+				<span class="line-one">Tu academia, en línea,</span>
+				<span class="line-two">sin fricción</span>
+			</h1>
+
+			<p class="subhead">
+				Publica cursos, gestiona alumnos y cobra matrículas — todo con tu propia
+				marca y tu propio subdominio.
+			</p>
+
+			<div class="ctas">
+				<a class="cta-primary" href="mailto:hola@aprendofeliz.com">
+					Solicitar acceso
+					<Icon name="arrow_forward" size={18} />
+				</a>
+				<a class="cta-secondary" href="#como-funciona">
+					<Icon name="play_circle" size={18} color="var(--platform-primary)" />
+					Ver cómo funciona
+				</a>
+			</div>
+
+			<ul class="checks">
+				{
+					trustChecks.map((label) => (
+						<li>
+							<Icon name="check_circle" size={16} color="var(--teal-deep)" />
+							{label}
+						</li>
+					))
+				}
+			</ul>
+		</div>
+
+		<div class="hero-visual">
+			<div class="glow" aria-hidden="true"></div>
+
+			<div class="browser">
+				<div class="browser-top">
+					<span class="dots" aria-hidden="true">
+						<i style="background:#ffaaf9"></i>
+						<i style="background:#c2c1ff"></i>
+						<i style="background:#44d7fc"></i>
+					</span>
+					<span class="urlbar">
+						<Icon name="lock" size={12} color="#000000" />
+						academia.aprendofeliz.com
+					</span>
+				</div>
+
+				<div class="dashboard">
+					<aside class="sidebar">
+						<div class="sidebar-top">
+							<div class="academy-row">
+								<span class="academy-avatar" aria-hidden="true"></span>
+								<span class="academy-text">
+									<strong>Nova Digital</strong>
+									<em>Bogotá, Colombia</em>
+								</span>
+							</div>
+
+							<ul class="navlist">
+								{
+									sidebarNav.map((item) => (
+										<li class:list={["navitem", { active: item.active }]}>
+											<Icon
+												name={item.icon}
+												size={14}
+												color={
+													item.active
+														? "var(--platform-primary)"
+														: "var(--ink-medium)"
+												}
+											/>
+											<span class="navlabel">{item.label}</span>
+											{item.badge && <span class="navbadge">{item.badge}</span>}
+										</li>
+									))
+								}
+							</ul>
+						</div>
+
+						<div class="sidebar-bottom">
+							<span>Plan Academia</span>
+							<strong>Activo</strong>
+						</div>
+					</aside>
+
+					<div class="panel">
+						<div class="panel-header">
+							<div class="panel-title">
+								<strong>Panel Principal</strong>
+								<em>Monitoreo de inscripciones en vivo</em>
+							</div>
+							<span class="live">
+								<i class="pulse" aria-hidden="true"></i>
+								En Vivo
+							</span>
+						</div>
+
+						<div class="metrics">
+							{
+								metrics.map((metric) => (
+									<div class="metric">
+										<span class="metric-label">{metric.label}</span>
+										<strong class="metric-value">{metric.value}</strong>
+										<span class:list={["metric-sub", metric.subTone]}>
+											{metric.sub}
+										</span>
+									</div>
+								))
+							}
+						</div>
+
+						<div class="course-card">
+							<div class="course-top">
+								<div class="course-info">
+									<span class="pub-badge">Publicado</span>
+									<strong class="course-title">Diseño UX/UI Profesional</strong>
+									<span class="course-meta">
+										142 alumnos matriculados · 6 módulos
+									</span>
+								</div>
+								<span class="course-icon">
+									<Icon name="layers" size={18} color="var(--platform-primary)" />
+								</span>
+							</div>
+
+							<div class="progress-row">
+								<span class="track"><i style="width:74%"></i></span>
+								<span class="progress-text">74% ritmo</span>
+							</div>
+						</div>
+
+						<div class="notification">
+							<span class="notif-left">
+								<i class="notif-pulse" aria-hidden="true"></i>
+								Comprobante bancario recibido (#BOG-982)
+							</span>
+							<span class="review-btn">Revisar</span>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+<style>
+	.hero-inner {
+		display: flex;
+		align-items: center;
+		gap: 48px;
+	}
+
+	/* ---------- Left column ---------- */
+
+	.hero-content {
+		width: 640px;
+		flex: 0 0 auto;
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
+		gap: 24px;
+	}
+
+	.badge {
+		display: inline-flex;
+		align-items: center;
+		gap: 8px;
+		background: var(--white);
+		border: 1px solid var(--line);
+		border-radius: 20px;
+		padding: 8px 14px;
+		font-size: 12px;
+		font-weight: 700;
+		letter-spacing: 0.8px;
+		color: var(--ink-medium);
+	}
+
+	.badge-dot {
+		width: 8px;
+		height: 8px;
+		border-radius: 50%;
+		background: var(--logo-cyan);
+	}
+
+	.headline {
+		display: flex;
+		flex-direction: column;
+		font-size: clamp(38px, 4.6vw, 58px);
+		font-weight: 800;
+		letter-spacing: -1.2px;
+		line-height: 1.1;
+	}
+
+	.line-one {
+		color: var(--logo-navy);
+	}
+
+	.line-two {
+		background: var(--gradient-brand);
+		-webkit-background-clip: text;
+		background-clip: text;
+		color: transparent;
+		width: fit-content;
+	}
+
+	.subhead {
+		font-size: 19px;
+		line-height: 1.6;
+		color: var(--ink-medium);
+		max-width: 60ch;
+	}
+
+	.ctas {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 16px;
+	}
+
+	.cta-primary,
+	.cta-secondary {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		gap: 8px;
+		border-radius: var(--radius);
+		font-size: 16px;
+		font-weight: 700;
+		transition: transform 0.15s ease, box-shadow 0.15s ease;
+	}
+
+	.cta-primary {
+		background: var(--gradient-brand);
+		color: var(--white);
+		padding: 14px 32px;
+	}
+
+	.cta-secondary {
+		background: var(--white);
+		border: 1px solid var(--line);
+		color: var(--logo-navy);
+		padding: 14px 28px;
+	}
+
+	.cta-primary:hover,
+	.cta-secondary:hover {
+		transform: translateY(-1px);
+		box-shadow: var(--shadow-card);
+	}
+
+	.checks {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 24px;
+	}
+
+	.checks li {
+		display: flex;
+		align-items: center;
+		gap: 6px;
+		font-size: 13px;
+		font-weight: 500;
+		color: var(--ink-medium);
+	}
+
+	/* ---------- Right column: product mock ---------- */
+
+	.hero-visual {
+		position: relative;
+		flex: 1 1 auto;
+		min-width: 0;
+		min-height: 520px;
+		display: flex;
+		align-items: center;
+	}
+
+	.glow {
+		position: absolute;
+		left: 10px;
+		top: 20px;
+		width: 600px;
+		max-width: 100%;
+		height: 460px;
+		border-radius: 24px;
+		background: var(--gradient-brand);
+		filter: blur(40px);
+		opacity: 0.35;
+		pointer-events: none;
+	}
+
+	.browser {
+		position: relative;
+		width: 600px;
+		max-width: 100%;
+		height: 440px;
+		margin-left: 20px;
+		background: var(--white);
+		border: 1px solid var(--line);
+		border-radius: 16px;
+		box-shadow: var(--shadow-float);
+		overflow: hidden;
+		display: flex;
+		flex-direction: column;
+	}
+
+	.browser-top {
+		display: flex;
+		align-items: center;
+		gap: 12px;
+		background: var(--tint-lilac);
+		padding: 12px 16px;
+	}
+
+	.dots {
+		display: flex;
+		gap: 6px;
+	}
+
+	.dots i {
+		width: 10px;
+		height: 10px;
+		border-radius: 50%;
+	}
+
+	.urlbar {
+		flex: 1;
+		display: flex;
+		align-items: center;
+		gap: 6px;
+		background: var(--white);
+		border: 1px solid var(--line);
+		border-radius: 6px;
+		padding: 6px 12px;
+		font-size: 11px;
+		color: var(--ink-medium);
+	}
+
+	.dashboard {
+		flex: 1;
+		display: flex;
+		min-height: 0;
+	}
+
+	.sidebar {
+		width: 180px;
+		flex: 0 0 auto;
+		background: var(--white);
+		border-right: 1px solid var(--line);
+		padding: 16px;
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+		gap: 16px;
+	}
+
+	.sidebar-top {
+		display: flex;
+		flex-direction: column;
+		gap: 14px;
+	}
+
+	.academy-row {
+		display: flex;
+		align-items: center;
+		gap: 8px;
+		padding-bottom: 10px;
+		border-bottom: 1px solid var(--line);
+	}
+
+	.academy-avatar {
+		width: 26px;
+		height: 26px;
+		border-radius: 8px;
+		background: var(--platform-primary);
+		flex: 0 0 auto;
+	}
+
+	.academy-text {
+		display: flex;
+		flex-direction: column;
+		gap: 1px;
+		min-width: 0;
+	}
+
+	.academy-text strong {
+		font-size: 11px;
+		font-weight: 700;
+		color: var(--logo-navy);
+	}
+
+	.academy-text em {
+		font-size: 9px;
+		font-style: normal;
+		color: var(--ink-medium);
+	}
+
+	.navlist {
+		display: flex;
+		flex-direction: column;
+		gap: 4px;
+	}
+
+	.navitem {
+		display: flex;
+		align-items: center;
+		gap: 8px;
+		border-radius: 6px;
+		padding: 6px 8px;
+	}
+
+	.navitem.active {
+		background: var(--tint-lilac-strong);
+	}
+
+	.navlabel {
+		flex: 1;
+		font-size: 11px;
+		color: var(--ink-medium);
+	}
+
+	.navitem.active .navlabel {
+		font-weight: 700;
+		color: var(--platform-primary);
+	}
+
+	.navbadge {
+		background: var(--logo-magenta);
+		color: var(--white);
+		font-size: 9px;
+		font-weight: 700;
+		border-radius: 10px;
+		padding: 1px 6px;
+	}
+
+	.sidebar-bottom {
+		display: flex;
+		justify-content: space-between;
+		padding-top: 10px;
+		border-top: 1px solid var(--line);
+		font-size: 10px;
+		color: var(--ink-medium);
+	}
+
+	.sidebar-bottom strong {
+		font-weight: 700;
+		color: var(--teal-deep);
+	}
+
+	.panel {
+		flex: 1;
+		min-width: 0;
+		background: var(--brand-bg);
+		padding: 20px;
+		display: flex;
+		flex-direction: column;
+		gap: 14px;
+	}
+
+	.panel-header {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: 12px;
+	}
+
+	.panel-title {
+		display: flex;
+		flex-direction: column;
+		gap: 2px;
+	}
+
+	.panel-title strong {
+		font-size: 14px;
+		font-weight: 700;
+		color: var(--logo-navy);
+	}
+
+	.panel-title em {
+		font-size: 10px;
+		font-style: normal;
+		color: var(--ink-medium);
+	}
+
+	.live {
+		display: inline-flex;
+		align-items: center;
+		gap: 6px;
+		background: var(--teal-badge);
+		border-radius: 20px;
+		padding: 5px 10px;
+		font-size: 10px;
+		font-weight: 700;
+		color: var(--teal-ink);
+		white-space: nowrap;
+	}
+
+	.pulse {
+		width: 6px;
+		height: 6px;
+		border-radius: 50%;
+		background: var(--teal-deep);
+	}
+
+	.metrics {
+		display: flex;
+		gap: 10px;
+	}
+
+	.metric {
+		flex: 1;
+		min-width: 0;
+		background: var(--white);
+		border: 1px solid var(--line);
+		border-radius: 10px;
+		padding: 12px;
+		display: flex;
+		flex-direction: column;
+		gap: 4px;
+	}
+
+	.metric-label {
+		font-size: 9px;
+		font-weight: 600;
+		letter-spacing: 0.5px;
+		color: var(--ink-medium);
+	}
+
+	.metric-value {
+		font-size: 19px;
+		font-weight: 700;
+		color: var(--logo-navy);
+	}
+
+	.metric-sub {
+		font-size: 9px;
+		font-weight: 600;
+	}
+
+	.metric-sub.teal {
+		color: var(--teal-deep);
+	}
+
+	.metric-sub.primary {
+		color: var(--platform-primary);
+	}
+
+	.course-card {
+		background: var(--white);
+		border: 1px solid var(--line);
+		border-radius: 10px;
+		padding: 14px;
+		display: flex;
+		flex-direction: column;
+		gap: 10px;
+	}
+
+	.course-top {
+		display: flex;
+		justify-content: space-between;
+		gap: 12px;
+	}
+
+	.course-info {
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
+		gap: 5px;
+	}
+
+	.pub-badge {
+		background: var(--teal-soft);
+		color: var(--teal-label);
+		font-size: 9px;
+		font-weight: 700;
+		border-radius: 4px;
+		padding: 2px 8px;
+	}
+
+	.course-title {
+		font-size: 12px;
+		font-weight: 700;
+		color: var(--logo-navy);
+	}
+
+	.course-meta {
+		font-size: 10px;
+		color: var(--ink-medium);
+	}
+
+	.course-icon {
+		width: 34px;
+		height: 34px;
+		flex: 0 0 auto;
+		border-radius: 8px;
+		background: var(--tint-lilac-strong);
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+	}
+
+	.progress-row {
+		display: flex;
+		align-items: center;
+		gap: 10px;
+		padding-top: 8px;
+		border-top: 1px solid var(--line);
+	}
+
+	.track {
+		flex: 1;
+		height: 6px;
+		border-radius: 3px;
+		background: var(--tint-lilac);
+		overflow: hidden;
+	}
+
+	.track i {
+		display: block;
+		height: 100%;
+		border-radius: 3px;
+		background: var(--logo-cyan);
+	}
+
+	.progress-text {
+		font-size: 9px;
+		font-weight: 700;
+		color: var(--ink-medium);
+		white-space: nowrap;
+	}
+
+	.notification {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: 12px;
+		background: #f0effbcc;
+		border: 1px solid var(--line);
+		border-radius: 8px;
+		padding: 10px 12px;
+	}
+
+	.notif-left {
+		display: flex;
+		align-items: center;
+		gap: 8px;
+		font-size: 10px;
+		font-weight: 500;
+		color: var(--logo-navy);
+	}
+
+	.notif-pulse {
+		width: 7px;
+		height: 7px;
+		border-radius: 50%;
+		background: var(--logo-magenta);
+		flex: 0 0 auto;
+	}
+
+	.review-btn {
+		background: var(--white);
+		border: 1px solid var(--line);
+		border-radius: 6px;
+		padding: 5px 10px;
+		font-size: 9px;
+		font-weight: 700;
+		color: var(--platform-primary);
+		white-space: nowrap;
+	}
+
+	/* ---------- Responsive ---------- */
+
+	@media (max-width: 1180px) {
+		.hero-inner {
+			flex-direction: column;
+			align-items: stretch;
+		}
+
+		.hero-content {
+			width: 100%;
+		}
+
+		.hero-visual {
+			min-height: 0;
+			justify-content: center;
+		}
+
+		.glow {
+			left: 50%;
+			transform: translateX(-50%);
+			top: 10px;
+		}
+
+		.browser {
+			margin-left: 0;
+			margin-top: 30px;
+		}
+	}
+
+	@media (max-width: 640px) {
+		/* Keep the product mock, but drop the sidebar so the panel stays legible */
+		.sidebar {
+			display: none;
+		}
+
+		.browser {
+			height: 400px;
+		}
+
+		.ctas {
+			width: 100%;
+		}
+
+		.cta-primary,
+		.cta-secondary {
+			flex: 1 1 100%;
+		}
+	}
+</style>

@@ -1,0 +1,140 @@
+---
+import Icon from "./Icon.astro";
+
+const pillars = [
+	{
+		icon: "schedule",
+		dot: "var(--logo-cyan)",
+		title: "Cursos a tu ritmo",
+		description:
+			"Organiza el contenido en unidades, con desbloqueo inmediato o por calendario. Tus alumnos avanzan a su paso.",
+	},
+	{
+		icon: "account_balance_wallet",
+		dot: "var(--logo-purple)",
+		title: "Pagos simples",
+		description:
+			"Recibe y valida comprobantes de pago sin integraciones complejas. Cobra desde el primer día.",
+	},
+	{
+		icon: "domain",
+		dot: "var(--logo-magenta)",
+		title: "Tu marca, tu subdominio",
+		description:
+			"Cada academia con sus colores, su identidad y su espacio propio. Tus alumnos ven tu marca, no la nuestra.",
+	},
+];
+---
+
+<section id="caracteristicas" class="pillars section">
+	<div class="section-inner">
+		<p class="eyebrow">FUNDAMENTOS DE LA PLATAFORMA</p>
+		<h2>Todo lo que necesitas para enseñar profesionalmente</h2>
+		<p class="subtitle">
+			Diseñado específicamente para el ecosistema educativo independiente en
+			nuestra región.
+		</p>
+
+		<ul class="cards">
+			{
+				pillars.map((pillar) => (
+					<li class="card">
+						<span class="icon-wrap">
+							<Icon
+								name={pillar.icon}
+								size={24}
+								color="var(--platform-primary)"
+							/>
+							<i class="accent-dot" style={`background:${pillar.dot}`} />
+						</span>
+						<h3>{pillar.title}</h3>
+						<p>{pillar.description}</p>
+					</li>
+				))
+			}
+		</ul>
+	</div>
+</section>
+
+<style>
+	.section-inner {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 16px;
+	}
+
+	h2 {
+		max-width: 600px;
+		text-align: center;
+		font-size: clamp(30px, 3.4vw, 42px);
+		font-weight: 700;
+		letter-spacing: -0.8px;
+		color: var(--logo-navy);
+	}
+
+	.subtitle {
+		max-width: 560px;
+		text-align: center;
+		font-size: 16px;
+		color: var(--ink-medium);
+	}
+
+	.cards {
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+		gap: 24px;
+		width: 100%;
+		margin-top: 32px;
+	}
+
+	.card {
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
+		gap: 16px;
+		background: var(--white);
+		border: 1px solid var(--line);
+		border-radius: var(--radius);
+		padding: 32px;
+	}
+
+	.icon-wrap {
+		position: relative;
+		width: 48px;
+		height: 48px;
+		border-radius: 10px;
+		background: var(--tint-primary);
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+	}
+
+	.accent-dot {
+		position: absolute;
+		left: 36px;
+		top: -4px;
+		width: 10px;
+		height: 10px;
+		border-radius: 50%;
+	}
+
+	.card h3 {
+		font-size: 20px;
+		font-weight: 700;
+		color: var(--logo-navy);
+	}
+
+	.card p {
+		font-size: 15px;
+		line-height: 1.6;
+		color: var(--ink-medium);
+	}
+
+	@media (max-width: 960px) {
+		.cards {
+			grid-template-columns: 1fr;
+			max-width: 560px;
+		}
+	}
+</style>

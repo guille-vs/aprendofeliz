@@ -1,0 +1,407 @@
+---
+import Icon from "./Icon.astro";
+
+const features = [
+	{
+		icon: "verified",
+		title: "Validación Automática y Manual",
+		description:
+			"Notificaciones instantáneas al recibir comprobantes de pago para habilitar accesos de inmediato.",
+	},
+	{
+		icon: "auto_stories",
+		title: "Campus Virtual del Alumno",
+		description:
+			"Reproductor responsivo, seguimiento de progreso por porcentaje y descarga de certificados automáticos.",
+	},
+];
+
+const students = [
+	{
+		initials: "MV",
+		avatarBg: "var(--tint-violet)",
+		initialsColor: "var(--platform-primary)",
+		name: "María Victoria Soto",
+		course: "Curso: Marketing Digital Pro · Santiago",
+		status: "Acceso Concedido",
+		statusTone: "granted",
+		time: "Hace 12 min",
+	},
+	{
+		initials: "ER",
+		avatarBg: "var(--tint-violet)",
+		initialsColor: "var(--platform-primary)",
+		name: "Esteban Ramírez",
+		course: "Curso: Fullstack JavaScript · CDMX",
+		status: "Acceso Concedido",
+		statusTone: "granted",
+		time: "Hace 34 min",
+	},
+	{
+		initials: "LP",
+		avatarBg: "var(--tint-lilac-strong)",
+		initialsColor: "var(--logo-magenta)",
+		name: "Lucía Paredes",
+		course: "Curso: Liderazgo y Equipos · Lima",
+		status: "Comprobante por Revisar",
+		statusTone: "pending",
+		time: "Hace 1 hora",
+	},
+];
+---
+
+<section id="modulos" class="modules section">
+	<div class="section-inner">
+		<div class="left">
+			<p class="module-badge">
+				<Icon name="widgets" size={14} color="var(--platform-primary)" />
+				Soluciones Modulares
+			</p>
+
+			<h2>Módulos construidos para simplificar la gestión educativa</h2>
+
+			<p class="lead">
+				Olvídate de conectar plugins inestables o sistemas fragmentados. Aprendo
+				Feliz reúne en una sola interfaz lo que antes requería cuatro
+				herramientas distintas.
+			</p>
+
+			<ul class="features">
+				{
+					features.map((feature) => (
+						<li class="feature">
+							<span class="feature-icon">
+								<Icon
+									name={feature.icon}
+									size={16}
+									color="var(--platform-primary)"
+								/>
+							</span>
+							<span class="feature-text">
+								<strong>{feature.title}</strong>
+								<span>{feature.description}</span>
+							</span>
+						</li>
+					))
+				}
+			</ul>
+		</div>
+
+		<div class="right">
+			<div class="card-header">
+				<div class="header-left">
+					<span class="avatar-box">AF</span>
+					<span class="header-text">
+						<strong>Gestión de Alumnos &amp; Pagos</strong>
+						<em>Vista en vivo de tu comunidad estudiantil</em>
+					</span>
+				</div>
+				<span class="consol-badge">Consolidado 2026</span>
+			</div>
+
+			<ul class="students">
+				{
+					students.map((student) => (
+						<li class="student-row">
+							<span class="student-left">
+								<span
+									class="student-avatar"
+									style={`background:${student.avatarBg};color:${student.initialsColor}`}
+								>
+									{student.initials}
+								</span>
+								<span class="student-info">
+									<strong>{student.name}</strong>
+									<em>{student.course}</em>
+								</span>
+							</span>
+
+							<span class="student-right">
+								<span class:list={["status", student.statusTone]}>
+									{student.status}
+								</span>
+								<em class="time">{student.time}</em>
+							</span>
+						</li>
+					))
+				}
+			</ul>
+		</div>
+	</div>
+</section>
+
+<style>
+	.section-inner {
+		display: flex;
+		align-items: center;
+		gap: 64px;
+	}
+
+	/* ---------- Left column ---------- */
+
+	.left {
+		flex: 1 1 0;
+		min-width: 0;
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
+		gap: 20px;
+	}
+
+	.module-badge {
+		display: inline-flex;
+		align-items: center;
+		gap: 8px;
+		background: var(--white);
+		border: 1px solid var(--line);
+		border-radius: 20px;
+		padding: 6px 12px;
+		font-size: 12px;
+		font-weight: 700;
+		color: var(--platform-primary);
+	}
+
+	h2 {
+		font-size: clamp(28px, 3vw, 36px);
+		font-weight: 700;
+		letter-spacing: -0.6px;
+		line-height: 1.2;
+		color: var(--logo-navy);
+	}
+
+	.lead {
+		font-size: 16px;
+		line-height: 1.6;
+		color: var(--ink-medium);
+	}
+
+	.features {
+		display: flex;
+		flex-direction: column;
+		gap: 12px;
+		width: 100%;
+	}
+
+	.feature {
+		display: flex;
+		gap: 12px;
+		background: var(--white);
+		border: 1px solid var(--line);
+		border-radius: 12px;
+		padding: 14px;
+	}
+
+	.feature-icon {
+		width: 32px;
+		height: 32px;
+		flex: 0 0 auto;
+		border-radius: 8px;
+		background: var(--tint-lilac);
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+	}
+
+	.feature-text {
+		display: flex;
+		flex-direction: column;
+		gap: 3px;
+		min-width: 0;
+	}
+
+	.feature-text strong {
+		font-size: 14px;
+		font-weight: 700;
+		color: var(--logo-navy);
+	}
+
+	.feature-text span {
+		font-size: 12px;
+		line-height: 1.5;
+		color: var(--ink-medium);
+	}
+
+	/* ---------- Right card ---------- */
+
+	.right {
+		flex: 1 1 0;
+		min-width: 0;
+		background: var(--white);
+		border: 1px solid var(--line);
+		border-radius: 16px;
+		box-shadow: var(--shadow-card);
+		padding: 28px;
+		display: flex;
+		flex-direction: column;
+		gap: 20px;
+	}
+
+	.card-header {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: 16px;
+		padding-bottom: 20px;
+		border-bottom: 1px solid var(--line);
+	}
+
+	.header-left {
+		display: flex;
+		align-items: center;
+		gap: 12px;
+		min-width: 0;
+	}
+
+	.avatar-box {
+		width: 40px;
+		height: 40px;
+		flex: 0 0 auto;
+		border-radius: 10px;
+		background: var(--platform-primary);
+		color: var(--white);
+		font-size: 13px;
+		font-weight: 700;
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+	}
+
+	.header-text {
+		display: flex;
+		flex-direction: column;
+		gap: 2px;
+		min-width: 0;
+	}
+
+	.header-text strong {
+		font-size: 14px;
+		font-weight: 700;
+		color: var(--logo-navy);
+	}
+
+	.header-text em {
+		font-size: 11px;
+		font-style: normal;
+		color: var(--ink-medium);
+	}
+
+	.consol-badge {
+		background: var(--tint-lilac);
+		color: var(--platform-primary);
+		font-size: 11px;
+		font-weight: 700;
+		border-radius: 20px;
+		padding: 6px 12px;
+		white-space: nowrap;
+	}
+
+	.student-row {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: 16px;
+		padding: 14px 0;
+		border-bottom: 1px solid var(--line);
+	}
+
+	.student-row:last-child {
+		border-bottom: none;
+		padding-bottom: 0;
+	}
+
+	.student-left {
+		display: flex;
+		align-items: center;
+		gap: 10px;
+		min-width: 0;
+	}
+
+	.student-avatar {
+		width: 32px;
+		height: 32px;
+		flex: 0 0 auto;
+		border-radius: 16px;
+		font-size: 11px;
+		font-weight: 700;
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+	}
+
+	.student-info {
+		display: flex;
+		flex-direction: column;
+		gap: 2px;
+		min-width: 0;
+	}
+
+	.student-info strong {
+		font-size: 12px;
+		font-weight: 700;
+		color: var(--logo-navy);
+	}
+
+	.student-info em {
+		font-size: 10px;
+		font-style: normal;
+		color: var(--ink-medium);
+	}
+
+	.student-right {
+		display: flex;
+		flex-direction: column;
+		align-items: flex-end;
+		gap: 3px;
+		flex: 0 0 auto;
+	}
+
+	.status {
+		font-size: 10px;
+		font-weight: 700;
+		border-radius: 4px;
+		padding: 3px 8px;
+		white-space: nowrap;
+	}
+
+	.status.granted {
+		background: var(--green-soft);
+		color: var(--green-ink);
+	}
+
+	.status.pending {
+		background: var(--magenta-soft);
+		color: var(--logo-magenta);
+	}
+
+	.time {
+		font-size: 9px;
+		font-style: normal;
+		color: var(--ink-medium);
+	}
+
+	@media (max-width: 1000px) {
+		.section-inner {
+			flex-direction: column;
+			align-items: stretch;
+			gap: 40px;
+		}
+	}
+
+	@media (max-width: 520px) {
+		.right {
+			padding: 20px;
+		}
+
+		.student-row {
+			flex-direction: column;
+			align-items: flex-start;
+			gap: 8px;
+		}
+
+		.student-right {
+			align-items: flex-start;
+			flex-direction: row;
+			gap: 8px;
+		}
+	}
+</style>

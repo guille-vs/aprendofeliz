@@ -1,0 +1,102 @@
+---
+import Isotipo from "./Isotipo.astro";
+
+const nav = [
+	{ href: "#caracteristicas", label: "Características" },
+	{ href: "#como-funciona", label: "Cómo funciona" },
+	{ href: "#modulos", label: "Módulos" },
+	{ href: "#preguntas-frecuentes", label: "Preguntas Frecuentes" },
+];
+---
+
+<header class="site-header">
+	<div class="bar">
+		<a class="lockup" href="/" aria-label="Aprendo Feliz — inicio">
+			<Isotipo size={36} />
+			<span class="wordmark">Aprendo Feliz</span>
+		</a>
+
+		<nav class="nav" aria-label="Principal">
+			{nav.map((item) => <a href={item.href}>{item.label}</a>)}
+		</nav>
+
+		<a class="header-cta" href="mailto:hola@aprendofeliz.com">Solicitar acceso</a>
+	</div>
+</header>
+
+<style>
+	.site-header {
+		position: sticky;
+		top: 0;
+		z-index: 50;
+		background: #f7f6fdee;
+		backdrop-filter: blur(12px);
+		-webkit-backdrop-filter: blur(12px);
+		padding: 20px var(--gutter);
+	}
+
+	.bar {
+		max-width: var(--content-max);
+		margin: 0 auto;
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: 24px;
+	}
+
+	.lockup {
+		display: flex;
+		align-items: center;
+		gap: 10px;
+	}
+
+	.wordmark {
+		font-size: 20px;
+		font-weight: 700;
+		color: var(--logo-navy);
+	}
+
+	.nav {
+		display: flex;
+		align-items: center;
+		gap: 36px;
+	}
+
+	.nav a {
+		font-size: 15px;
+		font-weight: 500;
+		color: var(--ink-medium);
+		transition: color 0.15s ease;
+	}
+
+	.nav a:hover {
+		color: var(--logo-navy);
+	}
+
+	.header-cta {
+		background: var(--platform-primary);
+		color: var(--white);
+		font-size: 14px;
+		font-weight: 600;
+		padding: 10px 24px;
+		border-radius: var(--radius);
+		white-space: nowrap;
+		transition: filter 0.15s ease;
+	}
+
+	.header-cta:hover {
+		filter: brightness(1.08);
+	}
+
+	@media (max-width: 1000px) {
+		.nav {
+			display: none;
+		}
+	}
+
+	@media (max-width: 420px) {
+		.wordmark {
+			display: none;
+		}
+	}
+</style>

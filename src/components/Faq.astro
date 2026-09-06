@@ -1,0 +1,186 @@
+---
+import Icon from "./Icon.astro";
+
+/*
+ * Only the first entry carries an answer in the design file — the remaining
+ * three are drawn collapsed. Their answer copy is written here so the
+ * accordion is functional, and stays consistent with the claims the rest of
+ * the page already makes (15 minutes of setup, no per-sale commission,
+ * subdomain + branding).
+ */
+const faqs = [
+	{
+		question: "¿Cómo cobro a mis alumnos en moneda local o transferencias?",
+		answer:
+			"Puedes habilitar recepción de transferencias bancarias locales, apps de billeteras digitales (como Nequi, Daviplata, Yape o Pix) o pasarelas de pago. Tus estudiantes suben el comprobante digital y tú lo validas en 1 clic desde tu panel, habilitando el acceso inmediato sin comisiones intermedias.",
+		open: true,
+	},
+	{
+		question: "¿Puedo usar mi propio dominio y colores institucionales?",
+		answer:
+			"Sí. Cada academia recibe su propio subdominio y puede aplicar su logo, su paleta y su identidad visual. Tus alumnos ven tu marca durante todo el recorrido, desde el registro hasta el certificado.",
+		open: false,
+	},
+	{
+		question: "¿Cuánto tiempo toma poner en marcha mi academia?",
+		answer:
+			"La configuración inicial toma alrededor de 15 minutos: eliges tu subdominio, subes tu logo y defines tus colores. Publicar el primer curso depende únicamente del contenido que ya tengas preparado.",
+		open: false,
+	},
+	{
+		question: "¿Existe algún límite en la cantidad de alumnos o cursos?",
+		answer:
+			"No aplicamos límites por cantidad de cursos ni cobramos comisión por venta. Si tu academia supera la capacidad del plan estándar, ajustamos el alcance contigo antes de que lo notes.",
+		open: false,
+	},
+];
+---
+
+<section id="preguntas-frecuentes" class="faq section">
+	<div class="section-inner">
+		<div class="head">
+			<p class="eyebrow">RESPUESTAS CLARAS</p>
+			<h2>Preguntas Frecuentes</h2>
+			<p class="sub">
+				¿Tienes otra consulta específica para tu academia?
+				<a href="mailto:hola@aprendofeliz.com">Contáctanos directamente</a>
+			</p>
+		</div>
+
+		<div class="list">
+			{
+				faqs.map((faq) => (
+					<details class="item" open={faq.open}>
+						<summary>
+							<span class="question">{faq.question}</span>
+							<span class="chevron">
+								<Icon
+									name="expand_more"
+									size={18}
+									color="var(--platform-primary)"
+								/>
+							</span>
+						</summary>
+						<div class="answer-wrap">
+							<p class="answer">{faq.answer}</p>
+						</div>
+					</details>
+				))
+			}
+		</div>
+	</div>
+</section>
+
+<style>
+	.faq {
+		background: var(--white);
+		border-top: 1px solid var(--line);
+		border-bottom: 1px solid var(--line);
+	}
+
+	.section-inner {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 40px;
+	}
+
+	.head {
+		max-width: 600px;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 10px;
+		text-align: center;
+	}
+
+	h2 {
+		font-size: clamp(28px, 3vw, 36px);
+		font-weight: 700;
+		color: var(--logo-navy);
+	}
+
+	.sub {
+		font-size: 15px;
+		color: var(--ink-medium);
+	}
+
+	.sub a {
+		color: var(--platform-primary);
+		font-weight: 600;
+		text-decoration: underline;
+		text-underline-offset: 2px;
+	}
+
+	.list {
+		width: 100%;
+		max-width: 760px;
+		display: flex;
+		flex-direction: column;
+		gap: 14px;
+	}
+
+	.item {
+		background: var(--white);
+		border: 1px solid var(--line);
+		border-radius: 16px;
+		padding: 24px;
+	}
+
+	summary {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: 16px;
+		cursor: pointer;
+		list-style: none;
+	}
+
+	summary::-webkit-details-marker {
+		display: none;
+	}
+
+	.question {
+		font-size: 17px;
+		font-weight: 700;
+		color: var(--logo-navy);
+	}
+
+	.chevron {
+		width: 32px;
+		height: 32px;
+		flex: 0 0 auto;
+		border-radius: 16px;
+		background: var(--tint-lilac-strong);
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		transition: transform 0.2s ease;
+	}
+
+	.item[open] .chevron {
+		transform: rotate(180deg);
+	}
+
+	.answer-wrap {
+		margin-top: 16px;
+		padding-top: 16px;
+		border-top: 1px solid var(--line);
+	}
+
+	.answer {
+		font-size: 15px;
+		line-height: 1.6;
+		color: var(--ink-medium);
+	}
+
+	@media (max-width: 640px) {
+		.item {
+			padding: 20px;
+		}
+
+		.question {
+			font-size: 16px;
+		}
+	}
+</style>
